@@ -9,11 +9,23 @@ document.addEventListener('DOMContentLoaded', function() {
     $.ajax({
       url: form.getAttribute('action'),
       method: form.getAttribute('method'),
-      dataType: 'html',
+      dataType: 'json',
       data: $(form).serialize()
     }).done(function(data){
       console.log(data);
-      $('#tweets').append(data)
+      //HTML: $('#tweets').append(data)
+      var listItem = document.createElement('li');
+      var p        = document.createElement('p');
+      p.innerText  = data.message;
+      var time     = document.createElement('time');
+      time.innerHTML   = data.created_at;
+      listItem.className = "tweet"
+      listItem.append(p)
+      listItem.append(time)
+
+      var tweetList = document.querySelector('.tweets');
+      tweetList.insertBefore(listItem, tweetList.firstChild);
+      // tweetList.append(listItem);
     });
   });
 

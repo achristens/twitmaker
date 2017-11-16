@@ -19,7 +19,7 @@ class TweetsController < ApplicationController
 
         format.json { render json: @tweet }
       end
-    end   
+    end
   end
 
   def destroy

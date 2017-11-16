@@ -18,9 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
       var p        = document.createElement('p');
       p.innerText  = data.message;
       var time     = document.createElement('time');
-      time.innerHTML = data.created_at;
-
-      listItem.innerHTML = p + time;
+      time.innerHTML   = data.created_at;
+      listItem.className = "tweet"
+      listItem.append(p)
+      listItem.append(time)
 
       var tweetList = document.querySelector('.tweets');
       tweetList.insertBefore(listItem, tweetList.firstChild);
